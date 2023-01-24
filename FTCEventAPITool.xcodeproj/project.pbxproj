@@ -11,6 +11,10 @@
 		CE3036D7297F7E6000735F7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3036D6297F7E6000735F7C /* ContentView.swift */; };
 		CE3036D9297F7E6100735F7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3036D8297F7E6100735F7C /* Assets.xcassets */; };
 		CE3036DC297F7E6100735F7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3036DB297F7E6100735F7C /* Preview Assets.xcassets */; };
+		CE3036E4297F7EFA00735F7C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3036E3297F7EFA00735F7C /* Controller.swift */; };
+		CE3036E6297F7F2900735F7C /* ScheduleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3036E5297F7F2900735F7C /* ScheduleJSON.swift */; };
+		CE3036E8297F7F6500735F7C /* MatchDataJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3036E7297F7F6500735F7C /* MatchDataJSON.swift */; };
+		CE3036EC297F82DC00735F7C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CE3036EB297F82DC00735F7C /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		CE3036D8297F7E6100735F7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3036DB297F7E6100735F7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE3036DD297F7E6100735F7C /* FTCEventAPITool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FTCEventAPITool.entitlements; sourceTree = "<group>"; };
+		CE3036E3297F7EFA00735F7C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		CE3036E5297F7F2900735F7C /* ScheduleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleJSON.swift; sourceTree = "<group>"; };
+		CE3036E7297F7F6500735F7C /* MatchDataJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDataJSON.swift; sourceTree = "<group>"; };
+		CE3036E9297F80D900735F7C /* NetworkTesting.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkTesting.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3036EC297F82DC00735F7C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,8 +63,12 @@
 			children = (
 				CE3036D4297F7E6000735F7C /* FTCEventAPIToolApp.swift */,
 				CE3036D6297F7E6000735F7C /* ContentView.swift */,
+				CE3036E3297F7EFA00735F7C /* Controller.swift */,
+				CE3036E5297F7F2900735F7C /* ScheduleJSON.swift */,
+				CE3036E7297F7F6500735F7C /* MatchDataJSON.swift */,
 				CE3036D8297F7E6100735F7C /* Assets.xcassets */,
 				CE3036DD297F7E6100735F7C /* FTCEventAPITool.entitlements */,
+				CE3036E9297F80D900735F7C /* NetworkTesting.playground */,
 				CE3036DA297F7E6100735F7C /* Preview Content */,
 			);
 			path = FTCEventAPITool;
@@ -85,6 +98,9 @@
 			dependencies = (
 			);
 			name = FTCEventAPITool;
+			packageProductDependencies = (
+				CE3036EB297F82DC00735F7C /* Alamofire */,
+			);
 			productName = FTCEventAPITool;
 			productReference = CE3036D1297F7E6000735F7C /* FTCEventAPITool.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +129,9 @@
 				Base,
 			);
 			mainGroup = CE3036C8297F7E6000735F7C;
+			packageReferences = (
+				CE3036EA297F82DC00735F7C /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = CE3036D2297F7E6000735F7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3036E6297F7F2900735F7C /* ScheduleJSON.swift in Sources */,
+				CE3036E4297F7EFA00735F7C /* Controller.swift in Sources */,
 				CE3036D7297F7E6000735F7C /* ContentView.swift in Sources */,
+				CE3036E8297F7F6500735F7C /* MatchDataJSON.swift in Sources */,
 				CE3036D5297F7E6000735F7C /* FTCEventAPIToolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE3036EA297F82DC00735F7C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE3036EB297F82DC00735F7C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE3036EA297F82DC00735F7C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE3036C9297F7E6000735F7C /* Project object */;
 }
