@@ -105,8 +105,14 @@ struct homeView: View {
 struct searchView: View {
     var controller: Controller
     var body: some View {
-        Text("Search")
-            .padding()
+        VStack {
+            Text("Search")
+                .padding()
+            ForEach(controller.schedule.schedule) { scheduleElement in
+                Text(scheduleElement.description)
+            }
+            Text("Shaking and crying")
+        }
     }
 }
 struct allianceView: View {

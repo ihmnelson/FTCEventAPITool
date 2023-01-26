@@ -8,10 +8,11 @@
 import Foundation
 import Alamofire
 
+// MARK: Controller class
 class Controller: ObservableObject {
     let userDefaults = UserDefaults.standard
     
-    @Published var schedule: [Match] = []
+    @Published var schedule: Schedule
     @Published var eventCode: String = "USWABES4"
     @Published var eventLevel: String = "qual"
     @Published var season: String = "2022"
@@ -45,31 +46,34 @@ class Controller: ObservableObject {
         username = userDefaults.string(forKey: "username")!
         authToken = userDefaults.string(forKey: "authToken")!
         encodedToken = userDefaults.string(forKey: "encodedToken")!
+//        schedule = Schedule()
     }
     
     func refreshData() {
         // MARK: Schedule refresh
+        // TODO: Add actual error handling
         let headers: HTTPHeaders = [
             .authorization(encodedToken)
         ]
         // URLSession
         let defaultSession = URLSession.shared
-        // TEST URL
-        let url = URL(string: "https://ftc-api.firstinspires.org/v2.0/2022/schedule/USWABES4/qual/hybrid")!
-        // ACTUAL URL
-        // let url = URL(string: "https://ftc-api.firstinspires.org/v2.0/\(season)/schedule/\(eventCode)/\(eventLevel)/hybrid")!
+        let url = URL(string: "https://ftc-api.firstinspires.org/v2.0/\(season)/schedule/\(eventCode)/\(eventLevel)/hybrid")!
         let request = try!URLRequest(url: url, method: HTTPMethod(rawValue: "GET"), headers: headers)
-        let task = defaultSession.dataTask(with: request) {data, response, error in
+        defaultSession.dataTask(with: request) {data, response, error in
+            if (error != nil) {print(error as Any)}
+            // Handle json
             if let data = data {
-                // Handle json
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    debugPrint(jsonString)
+                do {
+                    let schedule = try JSONDecoder().decode(Schedule.self, from: data)
+                    print("SCHEDULE BELOW HERE")
+                    print(schedule)
+                } catch let error {
+                    print("ERROR BELOW HERE")
+                    print(error)
                 }
-            } else if let error = error {
-                dump(error)
             }
-        }
-        task.resume()
+        }.resume()
+        
         // MARK: Match data refresh
         
     }
